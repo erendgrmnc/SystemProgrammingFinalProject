@@ -149,6 +149,8 @@ int txtWordCounter = 0;
 
   close(fd);
 
+=======
+
   jettison_inputstruct(is);
   exit(0);
 }
