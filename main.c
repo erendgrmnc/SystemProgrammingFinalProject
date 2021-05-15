@@ -118,6 +118,39 @@ int txtWordCounter = 0;
     }
   }
 
+  int fd, sz;
+  fd = open(argv[3], O_WRONLY | O_CREAT | O_TRUNC, 0644);
+  if (fd < 0) { perror("txt/out3.txt"); exit(1); }
+
+  if(isEncryptOrDecrypt == 0)
+  {
+    for(int i = 0; i < txtWordCounter; i++)
+    {
+    rnode = jrb_find_str(b, strdup(txtData[i].s));
+    if(rnode != NULL)
+    {
+      sz = write(fd, rnode->val.s, strlen(rnode->val.s));
+      sz = write(fd, " ", strlen(" "));
+    }
+   }
+  }
+  else
+  { 
+  for(int i = 0; i < txtWordCounter; i++)
+  {
+    rnode = jrb_find_str(b, strdup(txtData[i].s));
+    if(rnode != NULL)
+    {
+      sz = write(fd, rnode->val.s, strlen(rnode->val.s));
+      sz = write(fd, " ", strlen(" "));
+    }
+  }
+  }
+
+  close(fd);
+
+=======
+
   jettison_inputstruct(is);
   exit(0);
 }
