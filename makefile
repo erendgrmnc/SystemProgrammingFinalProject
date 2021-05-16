@@ -1,10 +1,8 @@
-# Bu bir makefile
-# Yorum satırı
 
 CC = gcc
 OBJ = main.o fields.o jval.o jrb.o
 
-all: main
+hepsi: main
 
 
 main: main.o fields.o jval.o jrb.o
@@ -12,18 +10,25 @@ main: main.o fields.o jval.o jrb.o
 
 main.o: main.c
 	$(CC) -c $<
-#	gcc -c p3.c
 
+#	gcc -c p3.c
+# libfdr kütüphanesi fields kaynak ve başlık dosyası işlemleri
 fields.o: ./libfdr/fields.c ./libfdr/fields.h
 	$(CC) -c $<
+
 # 	gcc p3.o fields.o -o p3
+# libfdr kütüphanesi jval kaynak ve başlık dosyası işlemleri
 jval.o: ./libfdr/jval.c ./libfdr/jval.h
 	$(CC) -c $<
+
+# libfdr kütüphanesi jrb kaynak ve başlık dosyası işlemleri
 jrb.o: ./libfdr/jrb.c ./libfdr/jrb.h
 	$(CC) -c $<
-clean:
+
+# .o dosyaları temizlenir
+temizle:
 	rm *.o
 
-vclean:
+vtemizle:
 	rm -rf *.o
 	rm main
